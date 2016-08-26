@@ -1,0 +1,53 @@
+{
+  "name": "resolve-alfred-prefs",
+  "version": "0.0.0",
+  "description": "Resolve the path of Alfred.alfredpreferences",
+  "license": "MIT",
+  "repository": "SamVerschueren/resolve-alfred-prefs",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "github.com/SamVerschueren"
+  },
+  "maintainers": [
+    {
+      "name": "Sindre Sorhus",
+      "email": "sindresorhus@gmail.com",
+      "url": "sindresorhus.com"
+    }
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "alfred",
+    "preferences",
+    "alfred-prefs",
+    "alfred-preferences",
+    "alfredpreferences",
+    "alfy",
+    "workflow",
+    "productivity"
+  ],
+  "dependencies": {
+    "bplist-parser": "^0.1.1",
+    "path-exists": "^3.0.0",
+    "pify": "^2.3.0",
+    "untildify": "^3.0.2",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "cp-file": "^3.2.0",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  }
+}

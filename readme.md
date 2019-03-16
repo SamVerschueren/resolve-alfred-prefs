@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save resolve-alfred-prefs
+$ npm install resolve-alfred-prefs
 ```
 
 
@@ -15,10 +15,10 @@ $ npm install --save resolve-alfred-prefs
 ```js
 const resolveAlfredPrefs = require('resolve-alfred-prefs');
 
-resolveAlfredPrefs().then(prefs => {
-	console.log(prefs);
+(async () => {
+	console.log(await resolveAlfredPrefs());
 	//=> '/Users/sam/Dropbox/Alfred.alfredpreferences'
-});
+})();
 ```
 
 

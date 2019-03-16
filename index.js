@@ -14,6 +14,10 @@ module.exports = async () => {
 	try {
 		data = await bplist.parseFile(settings);
 	} catch (error) {
+		if (error.code === 'EACCES') {
+			throw new Error(`Permission denied to read Alfred preferences at location ${settings}`);
+		}
+
 		if (error.code === 'ENOENT') {
 			throw new Error(`Alfred preferences not found at location ${settings}`);
 		}

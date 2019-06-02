@@ -7,7 +7,7 @@ const bplistParser = require('bplist-parser');
 const untildify = require('untildify');
 
 const bplist = pify(bplistParser);
-const settings = path.join(userHome, '/Library/Preferences/com.runningwithcrayons.Alfred-Preferences-3.plist');
+const settings = path.join(userHome, '/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist');
 
 module.exports = async () => {
 	const exists = await pathExists(settings);
@@ -17,7 +17,7 @@ module.exports = async () => {
 	}
 
 	const data = await bplist.parseFile(settings);
-	const syncfolder = data[0].syncfolder || '~/Library/Application Support/Alfred 3';
+	const syncfolder = data[0].syncfolder || '~/Library/Application Support/Alfred';
 
 	return untildify(`${syncfolder}/Alfred.alfredpreferences`);
 };

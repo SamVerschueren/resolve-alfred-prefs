@@ -6,13 +6,13 @@ import userHome from 'user-home';
 import pify from 'pify';
 import resolveAlfredPrefs from '..';
 
-const settings = path.join(userHome, '/Library/Preferences/com.runningwithcrayons.Alfred-Preferences-3.plist');
+const settings = path.join(userHome, '/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist');
 
 const mv = (src, dest) => pify(fs.rename)(src, dest).catch(() => { });
 
 test.before(async () => {
 	await mv(settings, `${settings}.back`);
-	await cp(path.join(__dirname, 'fixtures/com.runningwithcrayons.Alfred-Preferences-3.plist'), settings);
+	await cp(path.join(__dirname, 'fixtures/com.runningwithcrayons.Alfred-Preferences.plist'), settings);
 });
 
 test.after(async () => {

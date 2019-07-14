@@ -17,7 +17,11 @@ const resolveAlfredPrefs = require('resolve-alfred-prefs');
 
 (async () => {
 	console.log(await resolveAlfredPrefs());
-	//=> '/Users/sam/Dropbox/Alfred.alfredpreferences'
+	// If Alfred 4 or newer
+	//=> {path: '/Users/sam/Dropbox/Alfred.alfredpreferences'}
+
+	// If Alfred 3
+	//=> {version: '3', path: '/Users/sam/Dropbox/Alfred.alfredpreferences'}
 })();
 ```
 
@@ -26,7 +30,10 @@ const resolveAlfredPrefs = require('resolve-alfred-prefs');
 
 ### resolveAlfredPrefs()
 
-Returns a `Promise` for the `Alfred.alfredpreferences` path.
+Returns an `object` with:
+
+- `version` _(String)_ - The key will pesent if the Alfred version is 3.
+- `path` _(String)_ - The `Alfred.alfredpreferences` path.
 
 
 ## License

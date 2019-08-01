@@ -30,7 +30,10 @@ module.exports = async () => {
 		const syncfolder = data[0].syncfolder || '~/Library/Application Support/Alfred 3';
 		const prefsPath = untildify(`${syncfolder}/Alfred.alfredpreferences`);
 
-		return {version: '3', path: prefsPath};
+		return {
+			version: 3, 
+			path: prefsPath
+		};
 	} catch (error) {
 		if (error.code === 'EACCES') {
 			errorMessage = `Permission denied to read Alfred preferences at location ${settings}`;

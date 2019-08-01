@@ -17,7 +17,9 @@ module.exports = async () => {
 	try {
 		const prefsPath = JSON.parse(fs.readFileSync(prefsJsonPath)).current;
 
-		return {path: prefsPath};
+		return {
+			path: prefsPath
+		};
 	} catch (error) {
 		errorMessage = `Alfred preferences not found at location ${prefsJsonPath}`;
 	}

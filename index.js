@@ -31,7 +31,7 @@ module.exports = async () => {
 		const prefsPath = untildify(`${syncfolder}/Alfred.alfredpreferences`);
 
 		return {
-			version: 3, 
+			version: 3,
 			path: prefsPath
 		};
 	} catch (error) {

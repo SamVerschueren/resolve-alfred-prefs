@@ -35,7 +35,7 @@ test.serial('resolves `Alfred.alfredpreferences` path with Alfred 3', async t =>
 	await cp(path.join(__dirname, 'fixtures/com.runningwithcrayons.Alfred-Preferences-3.plist'), settings);
 
 	t.deepEqual(await resolveAlfredPrefs(), {
-		version: '3',
+		version: 3,
 		path: path.join(userHome, 'Documents/alfred/Alfred.alfredpreferences')
 	});
 

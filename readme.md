@@ -21,7 +21,7 @@ const resolveAlfredPrefs = require('resolve-alfred-prefs');
 	//=> {path: '/Users/sam/Dropbox/Alfred.alfredpreferences'}
 
 	// If Alfred 3
-	//=> {version: '3', path: '/Users/sam/Dropbox/Alfred.alfredpreferences'}
+	//=> {version: 3, path: '/Users/sam/Dropbox/Alfred.alfredpreferences'}
 })();
 ```
 

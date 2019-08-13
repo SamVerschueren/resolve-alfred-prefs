@@ -7,23 +7,37 @@ import pify from 'pify';
 import resolveAlfredPrefs from '..';
 
 const settings = path.join(userHome, '/Library/Preferences/com.runningwithcrayons.Alfred-Preferences-3.plist');
+const prefsJsonPath = path.join(userHome, '/Library/Application Support/Alfred/prefs.json');
 
 const mv = (src, dest) => pify(fs.rename)(src, dest).catch(() => { });
 const rm = file => pify(fs.unlink)(file);
 const chmod = (file, mode) => pify(fs.chmod)(file, mode);
 
-test.before(async () => {
+test.beforeEach(async () => {
 	await mv(settings, `${settings}.back`);
+	await mv(prefsJsonPath, `${prefsJsonPath}.back`);
 });
 
-test.after(async () => {
+test.afterEach(async () => {
 	await mv(`${settings}.back`, settings);
+	await mv(`${prefsJsonPath}.back`, prefsJsonPath);
 });
 
-test.serial('resolves `Alfred.alfredpreferences` path', async t => {
+test.serial('resolves `Alfred.alfredpreferences` path with Alfred 4 or newer', async t => {
+	await cp(path.join(__dirname, 'fixtures/prefs.json'), prefsJsonPath);
+
+	t.deepEqual(await resolveAlfredPrefs(), {
+		path: '/Users/litomore/Library/Application Support/Alfred/Alfred.alfredpreferences'
+	});
+});
+
+test.serial('resolves `Alfred.alfredpreferences` path with Alfred 3', async t => {
 	await cp(path.join(__dirname, 'fixtures/com.runningwithcrayons.Alfred-Preferences-3.plist'), settings);
 
-	t.is(await resolveAlfredPrefs(), path.join(userHome, 'Documents/alfred/Alfred.alfredpreferences'));
+	t.deepEqual(await resolveAlfredPrefs(), {
+		version: 3,
+		path: path.join(userHome, 'Documents/alfred/Alfred.alfredpreferences')
+	});
 
 	await rm(settings);
 });

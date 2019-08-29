@@ -29,6 +29,8 @@ test.serial('resolves `Alfred.alfredpreferences` path with Alfred 4 or newer', a
 	t.deepEqual(await resolveAlfredPrefs(), {
 		path: '/Users/litomore/Library/Application Support/Alfred/Alfred.alfredpreferences'
 	});
+
+	await rm(prefsJsonPath);
 });
 
 test.serial('resolves `Alfred.alfredpreferences` path with Alfred 3', async t => {

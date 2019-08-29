@@ -27,7 +27,7 @@ test.serial('resolves `Alfred.alfredpreferences` path with Alfred 4 or newer', a
 	await cp(path.join(__dirname, 'fixtures/prefs.json'), prefsJsonPath);
 
 	t.deepEqual(await resolveAlfredPrefs(), {
-		path: '/Users/litomore/Library/Application Support/Alfred/Alfred.alfredpreferences'
+		path: path.join(userHome, '/Library/Application Support/Alfred/Alfred.alfredpreferences')
 	});
 
 	await rm(prefsJsonPath);
